@@ -23,3 +23,4 @@ class Config:
     MAIL_PASSWORD = environ.get("MAIL_PASSWORD")
     MAIL_USE_TLS = False
     MAIL_USE_SSL = True
+    URL = environ.get("URL")

@@ -1,8 +1,9 @@
 from flask import Flask, render_template
 from flask_mail import Mail, Message
 from flask import request,flash
+from config import Config
 
-
+site_url = Config.URL
 app = Flask(__name__)
 
 app.config.from_object('config.Config')
@@ -15,7 +16,7 @@ def hello():
        # getting input with name = fname in HTML form
        print(request.form.get("email"))
        flash(f'Thanks for submiit created', 'success')
-    return render_template('index.html')
+    return render_template('index.html',url_site=site_url)
 
 @app.route('/form' , methods =["POST"] )
 def form_data():
@@ -32,9 +33,9 @@ def form_data():
        return "Success",200
 
 if __name__ == '__main__':
-    context = ('certificate.crt', 'private.key')
-    app.run(host='0.0.0.0', port=80, ssl_context=context)
-    # app.run(host='0.0.0.0', port=80)
+    # context = ('certificate.crt', 'private.key')
+    # app.run(host='0.0.0.0', port=80, ssl_context=context)
+    app.run(host='0.0.0.0', port=80)
 
 # @app.route("/send")
 # def index():

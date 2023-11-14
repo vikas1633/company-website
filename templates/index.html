@@ -342,7 +342,7 @@
                     
                                 // AJAX request
                                 var xhr = new XMLHttpRequest();
-                                xhr.open('POST', 'http://127.0.0.1:80/form', true);
+                                xhr.open('POST', '{{url_site}}/form', true);
                                 xhr.onreadystatechange = function () {
                                     if (xhr.readyState === 4) {
                                         if (xhr.status === 200) {
