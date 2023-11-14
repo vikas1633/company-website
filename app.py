@@ -1,6 +1,8 @@
 from flask import Flask, render_template
 from flask_mail import Mail, Message
 from flask import request,flash
+
+
 app = Flask(__name__)
 
 app.config.from_object('config.Config')
@@ -30,7 +32,9 @@ def form_data():
        return "Success",200
 
 if __name__ == '__main__':
-      app.run(host='0.0.0.0', port=80)
+    context = ('certificate.crt', 'private.key')
+    app.run(host='0.0.0.0', port=80, ssl_context=context)
+    # app.run(host='0.0.0.0', port=80)
 
 # @app.route("/send")
 # def index():
